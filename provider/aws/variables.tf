@@ -22,17 +22,17 @@ variable "aws_region" {
   description = "AWS Region"
 }
 
-variable "aws_vpc_name" {
-  description = "AWS VPC Name"
-}
+#variable "aws_vpc_name" {
+#  description = "AWS VPC Name"
+#}
 
-variable "aws_vpc_id" {
-  description = "AWS VPC ID"
-}
+#variable "aws_vpc_id" {
+#  description = "AWS VPC ID"
+#}
 
-variable "aws_subnet_name" {
-  description = "AWS  Subnet Name"
-}
+#variable "aws_subnet_name" {
+#  description = "AWS  Subnet Name"
+#}
 
 variable "aws_cidrs" {
   description = "AWS CIDR IP Range"
@@ -48,5 +48,5 @@ variable "tag_project" {
 }
 
 variable "tag_enddate" {
-  description = ""Resource expiration date (MMDDYYYY)"
+  description = "Resource expiration date (MMDDYYYY)"
 }
