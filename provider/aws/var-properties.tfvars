@@ -1,0 +1,6 @@
+owner_name = "tlepple"
+owner_initials = "rtl"
+aws_region = "us-east-1"
+tag_project = "personal_development"
+tag_enddate = "01312020"
+aws_s3_bucketname = "cdp"
