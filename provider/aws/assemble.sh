@@ -11,7 +11,8 @@ export TF_VAR_my_publicip="${GET_PUBLIC_IP}"
 #  call the terraform build
 log "Build out cloud env via Terraform"
 terraform init
-terraform apply -var-file var-properties.tfvars -auto-approve
+terraform apply -var-file var-properties.tfvars
+#terraform apply -var-file var-properties.tfvars -auto-approve
 
 # write terraform output to a json file:
-terraform output -json > $starting_dir/provider/aws/assemble_output.json
+#terraform output -json > $starting_dir/provider/aws/assemble_output.json
