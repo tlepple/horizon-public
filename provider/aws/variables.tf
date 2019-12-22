@@ -26,9 +26,10 @@ variable "aws_region" {
 #  description = "AWS VPC Name"
 #}
 
-#variable "aws_vpc_id" {
-#  description = "AWS VPC ID"
-#}
+variable "aws_vpc_id" {
+  description = "AWS VPC ID"
+  default = ""
+}
 
 #variable "aws_subnet_name" {
 #  description = "AWS  Subnet Name"
@@ -41,12 +42,15 @@ variable "aws_cidrs" {
 
 variable "aws_s3_bucketname" {
   description = "AWS S3 Bucketname"
+  default = ""
 }
 
 variable "tag_project" {
   description = "Project Name"
+  default = ""
 }
 
 variable "tag_enddate" {
   description = "Resource expiration date (MMDDYYYY)"
+  default = ""
 }
