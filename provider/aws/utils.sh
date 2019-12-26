@@ -95,3 +95,61 @@ install_aws_cli() {
   	log "Done installing AWS CLI"
 }
 
+#####################################################
+# Function to create ssh key pair
+#####################################################
+create_key_pair() {
+
+#ssh-keygen -t rsa -b 2048 -C ${TF_VAR_cloud_username:?} -f ${starting_dir:?}${TF_VAR_key_file_path:?}${TF_VAR_key_filename:?} -q -P ""
+#  chmod 0400 ${starting_dir:?}${TF_VAR_key_file_path:?}${TF_VAR_key_filename:?} 
+	
+	if [ -f ${starting_dir:?}${TF_VAR_key_file_path:?}${TF_VAR_private_key_name:?} ]; then
+	  log "Key already exists: ${TF_VAR_private_key_name:?}.  Will reuse it."
+	else
+	  log "Creating the ssh key pair files..."
+	  mkdir -p ${starting_dir:?}${TF_VAR_key_file_path:?}
+	  umask 0277
+          ssh-keygen -f ${starting_dir:?}${TF_VAR_key_file_path:?}${TF_VAR_private_key_name:?} -N "" -m PEM -t rsa -b 2048 -C ${TF_VAR_vm_ssh_user:?}
+	  chmod 0400 ${starting_dir:?}${TF_VAR_key_file_path:?}${TF_VAR_private_key_name:?}
+	  umask 0022 
+	  log "Private key created: ${TF_VAR_private_key_name:?}"
+	fi
+}
+
+#####################################################
+# Function to  archive ssh key pair
+#####################################################
+archive_key_pair() {
+	if [ -f ${starting_dir:?}${TF_VAR_key_file_path:?}${TF_VAR_private_key_name:?} ]; then
+	  log "Archiving key pair [${TF_VAR_private_key_name:?}]"
+	  mv -f ${starting_dir:?}${TF_VAR_key_file_path:?}${TF_VAR_private_key_name:?} ${starting_dir:?}${TF_VAR_key_file_path:?}.${TF_VAR_private_key_name:?}.OLD.$(date +%s)
+	  mv -f ${starting_dir:?}${TF_VAR_key_file_path:?}${TF_VAR_public_key_name:?} ${starting_dir:?}${TF_VAR_key_file_path:?}.${TF_VAR_public_key_name:?}.OLD.$(date +%s)
+	fi
+}
+
+#####################################################
+# Function to  archive assemble_output.json
+#####################################################
+archive_assemble_json() {
+	if [ -f ${starting_dir:?}/provider/gcp/assemble_output.json ]; then
+	   mv -f ${starting_dir:?}/provider/gcp/assemble_output.json ${starting_dir:?}/provider/gcp/archive/.assemble_output.json.OLD.$(date +%s)
+	fi
+}
+
+#####################################################
+# Function to copy key file to a bind mount
+#####################################################
+replicate_key() {
+	if [ -f ${starting_dir:?}${TF_VAR_key_file_path:?}${TF_VAR_private_key_name:?} ]; then
+	    #  call some attribs variables
+            . $starting_dir/provider/gcp/get_attribs.sh
+	    cp ${starting_dir:?}${TF_VAR_key_file_path:?}${TF_VAR_private_key_name:?} ${BIND_MNT_TARGET}/${LV_BIND_FILENAME}
+	fi
+}
+
+#####################################################
+# Function to delete bind key
+#####################################################
+delete_bind_key() {
+	rm -f ${BIND_MNT_TARGET}/${LV_BIND_FILENAME}
+}
