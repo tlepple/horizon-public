@@ -10,13 +10,13 @@ variable "name_prefix" {
   description = "Prefix Name for items"
 }
 
-variable "aws_access_key_id" {
-  description = "Abort this with CTRL-C, set the TF_VAR_aws_access_key_id environment variable in your shell and try again."
-}
+#variable "aws_access_key_id" {
+#  description = "Abort this with CTRL-C, set the TF_VAR_aws_access_key_id environment variable in your shell and try again."
+#}
 
-variable "aws_secret_access_key" {
-  description = "Abort this with CTRL-C, set the TF_VAR_aws_secret_access_key environment variable in your shell and try again."
-}
+#variable "aws_secret_access_key" {
+#  description = "Abort this with CTRL-C, set the TF_VAR_aws_secret_access_key environment variable in your shell and try again."
+#}
 
 variable "aws_region" {
   description = "AWS Region"
