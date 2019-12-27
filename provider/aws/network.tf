@@ -1,4 +1,3 @@
-################ VPC #################
 resource "aws_vpc" "vpc_network" {
     cidr_block           = var.aws_cidrs[0]
     enable_dns_support   = true
@@ -7,8 +6,8 @@ resource "aws_vpc" "vpc_network" {
     tags = {
       Name    = "${var.owner_name}-${var.name_prefix}-vpc"
       owner   = var.owner_name
-      project = var.project
-      enddate = var.enddate
+      project = var.tag_project
+      enddate = var.tag_enddate
     }
 }
 
@@ -20,8 +19,8 @@ resource "aws_subnet" "public-subnet" {
     tags = {
       Name    = "${var.owner_name}-${var.name_prefix}-public-subnet"
       owner   = var.owner_name
-      project = var.project
-      enddate = var.enddate
+      project = var.tag_project
+      enddate = var.tag_enddate
     }
 }
 
@@ -33,8 +32,8 @@ resource "aws_subnet" "private-subnet" {
     tags = {
       Name    = "${var.owner_name}-${var.name_prefix}-private-subnet"
       owner   = var.owner_name
-      project = var.project
-      enddate = var.enddate
+      project = var.tag_project
+      enddate = var.tag_enddate
     }
 }
 
@@ -45,8 +44,8 @@ resource "aws_internet_gateway" "igw" {
     tags = {
       Name    = "${var.owner_name}-${var.name_prefix}-igw"
       owner   = var.owner_name
-      project = var.project
-      enddate = var.enddate
+      project = var.tag_project
+      enddate = var.tag_enddate
     }
 }
 
@@ -61,8 +60,8 @@ resource "aws_route_table" "public-rt" {
     tags = {
       Name    = "${var.owner_name}-${var.name_prefix}-public-rt"
       owner   = var.owner_name
-      project = var.project
-      enddate = var.enddate
+      project = var.tag_project
+      enddate = var.tag_enddate
     }
 }
 
@@ -88,8 +87,8 @@ resource "aws_security_group" "public-sg" {
     tags = {
       Name    = "${var.owner_name}-${var.name_prefix}-public-sg"
       owner   = var.owner_name
-      project = var.project
-      enddate = var.enddate
+      project = var.tag_project
+      enddate = var.tag_enddate
     }
 }
 

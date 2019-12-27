@@ -1,13 +1,13 @@
-resource "aws_instance" "instance" {
+resource "aws_instance" "ec2" {
   ami                    = "ami-0f2b4fc905b0bd1f1"
   instance_type          = "m4.xlarge"
   key_name               = aws_key_pair.horizon-kp.key_name
-  subnet_id              = aws_subnet.public-subnet.id
-#  vpc_security_group_ids = [aws_security_group.public-sg.id]
+  subnet_id		 = aws_subnet.public-subnet.id
+#  subnet_id              = "${aws_subnet.public-subnet.id}"
 
-#  depends_on = [
-#    aws_route_table_association.rtb_assoc,
-#  ]
+  depends_on = [
+    aws_route_table_association.rtb_assoc,
+  ]
 
   timeouts {
     create = "10m"
@@ -26,10 +26,10 @@ resource "aws_instance" "instance" {
   }
 
   tags = {
-      Name    = "${var.owner_name}-${var.name_prefix}-instance"
+      Name    = "${var.owner_name}-${var.name_prefix}-ec2"
       owner   = var.owner_name
-      project = var.project
-      enddate = var.enddate
+      project = var.tag_project
+      enddate = var.tag_enddate
   }
 
 }
