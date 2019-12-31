@@ -131,8 +131,8 @@ archive_key_pair() {
 # Function to  archive assemble_output.json
 #####################################################
 archive_assemble_json() {
-	if [ -f ${starting_dir:?}/provider/gcp/assemble_output.json ]; then
-	   mv -f ${starting_dir:?}/provider/gcp/assemble_output.json ${starting_dir:?}/provider/gcp/archive/.assemble_output.json.OLD.$(date +%s)
+	if [ -f ${starting_dir:?}/provider/aws/assemble_output.json ]; then
+	   mv -f ${starting_dir:?}/provider/aws/assemble_output.json ${starting_dir:?}/provider/gcp/archive/.assemble_output.json.OLD.$(date +%s)
 	fi
 }
 
@@ -152,4 +152,44 @@ replicate_key() {
 #####################################################
 delete_bind_key() {
 	rm -f ${BIND_MNT_TARGET}/${LV_BIND_FILENAME}
+}
+
+#####################################################
+# Function to prepare template files
+#####################################################
+prepare_templates() {
+	# policies
+	cp ${starting_dir:?}/provider/aws/templates/policies/idbroker_assume_role_policy.json.template ${starting_dir:?}/provider/aws/policies/idbroker_assume_role_policy.json
+	cp ${starting_dir:?}/provider/aws/templates/policies/log_policy_s3acess.json.template ${starting_dir:?}/provider/aws/policies/log_policy_s3acess.json
+        sed -i "s/YourOwnerName/${OWNER_NAME}/g" ${starting_dir:?}/provider/aws/policies/log_policy_s3acess.json
+	cp ${starting_dir:?}/provider/aws/templates/policies/ranger_audit_policy_s3access.json.template ${starting_dir:?}/provider/aws/policies/ranger_audit_policy_s3access.json
+        sed -i "s/YourOwnerName/${OWNER_NAME}/g" ${starting_dir:?}/provider/aws/policies/ranger_audit_policy_s3access.json
+        cp ${starting_dir:?}/provider/aws/templates/policies/data_lake_admin_policy_s3access.json.template ${starting_dir:?}/provider/aws/policies/data_lake_admin_policy_s3access.json
+        sed -i "s/YourOwnerName/${OWNER_NAME}/g" ${starting_dir:?}/provider/aws/policies/data_lake_admin_policy_s3access.json
+        cp ${starting_dir:?}/provider/aws/templates/policies/bucket_policy_s3access.json.template ${starting_dir:?}/provider/aws/policies/bucket_policy_s3access.json
+        sed -i "s/YourOwnerName/${OWNER_NAME}/g" ${starting_dir:?}/provider/aws/policies/bucket_policy_s3access.json
+        cp ${starting_dir:?}/provider/aws/templates/policies/dynamodb_policy.json.template ${starting_dir:?}/provider/aws/policies/dynamodb_policy.json
+        sed -i "s/YourOwnerName/${OWNER_NAME}/g" ${starting_dir:?}/provider/aws/policies/dynamodb_policy.json
+        cp ${starting_dir:?}/provider/aws/templates/policies/dataeng_policy.json.template ${starting_dir:?}/provider/aws/policies/dataeng_policy.json
+        sed -i "s/YourOwnerName/${OWNER_NAME}/g" ${starting_dir:?}/provider/aws/policies/dataeng_policy.json
+        cp ${starting_dir:?}/provider/aws/templates/policies/datasci_policy.json.template ${starting_dir:?}/provider/aws/policies/datasci_policy.json
+        sed -i "s/YourOwnerName/${OWNER_NAME}/g" ${starting_dir:?}/provider/aws/policies/datasci_policy.json
+        cp ${starting_dir:?}/provider/aws/templates/policies/crossaccount_sase_policy.json.template ${starting_dir:?}/provider/aws/policies/crossaccount_sase_policy.json
+
+	# roles
+	cp ${starting_dir:?}/provider/aws/templates/roles/idbroker_role.json.template ${starting_dir:?}/provider/aws/roles/idbroker_role.json
+        cp ${starting_dir:?}/provider/aws/templates/roles/log_role.json.template ${starting_dir:?}/provider/aws/roles/log_role.json
+        cp ${starting_dir:?}/provider/aws/templates/roles/ranger_audit_role.json.template ${starting_dir:?}/provider/aws/roles/ranger_audit_role.json
+	sed -i "s/YourOwnerName/${OWNER_NAME}/g" ${starting_dir:?}/provider/aws/roles/ranger_audit_role.json
+	sed -i "s/YOUR_AWS_ACCOUNT_ID/`aws sts get-caller-identity | jq -r '.Account'`/g" ${starting_dir:?}/provider/aws/roles/ranger_audit_role.json
+        cp ${starting_dir:?}/provider/aws/templates/roles/datalake_admin_role.json.template ${starting_dir:?}/provider/aws/roles/datalake_admin_role.json
+	sed -i "s/YourOwnerName/${OWNER_NAME}/g" ${starting_dir:?}/provider/aws/roles/datalake_admin_role.json
+	sed -i "s/YOUR_AWS_ACCOUNT_ID/`aws sts get-caller-identity | jq -r '.Account'`/g" ${starting_dir:?}/provider/aws/roles/datalake_admin_role.json
+        cp ${starting_dir:?}/provider/aws/templates/roles/dataeng_role.json.template ${starting_dir:?}/provider/aws/roles/dataeng_role.json
+	sed -i "s/YourOwnerName/${OWNER_NAME}/g" ${starting_dir:?}/provider/aws/roles/dataeng_role.json
+	sed -i "s/YOUR_AWS_ACCOUNT_ID/`aws sts get-caller-identity | jq -r '.Account'`/g" ${starting_dir:?}/provider/aws/roles/dataeng_role.json
+        cp ${starting_dir:?}/provider/aws/templates/roles/datasci_role.json.template ${starting_dir:?}/provider/aws/roles/datasci_role.json
+	sed -i "s/YourOwnerName/${OWNER_NAME}/g" ${starting_dir:?}/provider/aws/datasci_role.json
+	sed -i "s/YOUR_AWS_ACCOUNT_ID/`aws sts get-caller-identity | jq -r '.Account'`/g" ${starting_dir:?}/provider/aws/roles/datasci_role.json
+        cp ${starting_dir:?}/provider/aws/templates/roles/crossaccount_sase_role.json.template ${starting_dir:?}/provider/aws/roles/crossaccount_sase_role.json
 }

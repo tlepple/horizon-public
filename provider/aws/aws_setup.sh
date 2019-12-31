@@ -28,12 +28,17 @@ install_terraform_cli
 create_key_pair
 
 #####################################################
-#       Step 5: build out AWS env
+#       Step 5: prepare IAM Policies and Roles 
 #####################################################
-#. $starting_dir/provider/aws/assemble.sh
+prepare_templates
 
 #####################################################
-#       Step 6: replicate key to bind mnt
+#       Step 6: build out AWS env with terraform 
+#####################################################
+. $starting_dir/provider/aws/assemble.sh
+
+#####################################################
+#       Step 7: replicate key to bind mnt
 #####################################################
 replicate_key
 
