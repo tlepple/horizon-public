@@ -95,22 +95,22 @@ resource "aws_iam_policy_attachment" "ranger-audit-policy-attach" {
 resource "aws_iam_policy" "dynamodb-policy" {
     name        = "${var.owner_name}-dynamodb-policy"
     description = "CDP iam policy - dynamodb policy"
-    policy      = file("/app/horizon-public/provider/aws/policies/dynomodb_policy.json")
+    policy      = file("/app/horizon-public/provider/aws/policies/dynamodb_policy.json")
 }
 
-resource "aws_iam_policy_attachment" "dynomodb-policy-attach" {
-  name       = "${var.owner_name}-dynomodb-policy-attachment"
+resource "aws_iam_policy_attachment" "dynamodb-policy-attach" {
+  name       = "${var.owner_name}-dynamodb-policy-attachment"
   roles      = [aws_iam_role.ranger-audit-role.name]
-  policy_arn = aws_iam_policy.dynomodb-policy.arn
+  policy_arn = aws_iam_policy.dynamodb-policy.arn
 }
 
 ##############################################################################################
 #	datalake admin - policy, role,  attachment
 ##############################################################################################
-resource "aws_iam_policy" "datalake-admin-policy" {
-    name        = "${var.owner_name}-datalake-admin-policy"
-    description = "CDP iam policy - datalake admin policy"
-    policy      = file("/app/horizon-public/provider/aws/policies/datalake_admin_policy.json")
+resource "aws_iam_policy" "datalake-admin-policy-s3access" {
+    name        = "${var.owner_name}-datalake-admin-policy-s3access"
+    description = "CDP iam policy - datalake admin policy s3access"
+    policy      = file("/app/horizon-public/provider/aws/policies/datalake_admin_policy_s3access.json")
 }
 
 resource "aws_iam_role" "datalake-admin-role" {
@@ -126,13 +126,13 @@ resource "aws_iam_role" "datalake-admin-role" {
 resource "aws_iam_policy_attachment" "datalake-admin-policy-attach" {
   name       = "${var.owner_name}-datalake-admin-policy-attachment"
   roles      = [aws_iam_role.datalake-admin-role.name]
-  policy_arn = aws_iam_policy.datalake-admin-policy.arn
+  policy_arn = aws_iam_policy.datalake-admin-policy-s3access.arn
 }
 
-resource "aws_iam_policy_attachment" "datalake-admin-dynomodb-policy-attach" {
-  name       = "${var.owner_name}-datalake-admin-dynomodb-policy-attachment"
+resource "aws_iam_policy_attachment" "datalake-admin-dynamodb-policy-attach" {
+  name       = "${var.owner_name}-datalake-admin-dynamodb-policy-attachment"
   roles      = [aws_iam_role.datalake-admin-role.name]
-  policy_arn = aws_iam_policy.dynomodb-policy.arn
+  policy_arn = aws_iam_policy.dynamodb-policy.arn
 }
 
 
@@ -161,10 +161,10 @@ resource "aws_iam_policy_attachment" "dataeng-policy-attach" {
   policy_arn = aws_iam_policy.dataeng-policy.arn
 }
 
-resource "aws_iam_policy_attachment" "dataeng-dynomodb-policy-attach" {
-  name       = "${var.owner_name}-dataeng-dynomodb-policy-attachment"
+resource "aws_iam_policy_attachment" "dataeng-dynamodb-policy-attach" {
+  name       = "${var.owner_name}-dataeng-dynamodb-policy-attachment"
   roles      = [aws_iam_role.dataeng-role.name]
-  policy_arn = aws_iam_policy.dynomodb-policy.arn
+  policy_arn = aws_iam_policy.dynamodb-policy.arn
 }
 
 
@@ -193,10 +193,10 @@ resource "aws_iam_policy_attachment" "datasci-policy-attach" {
   policy_arn = aws_iam_policy.datasci-policy.arn
 }
 
-resource "aws_iam_policy_attachment" "datasci-dynomodb-policy-attach" {
-  name       = "${var.owner_name}-datasci-dynomodb-policy-attachment"
+resource "aws_iam_policy_attachment" "datasci-dynamodb-policy-attach" {
+  name       = "${var.owner_name}-datasci-dynamodb-policy-attachment"
   roles      = [aws_iam_role.datasci-role.name]
-  policy_arn = aws_iam_policy.dynomodb-policy.arn
+  policy_arn = aws_iam_policy.dynamodb-policy.arn
 }
 
 ##############################################################################################

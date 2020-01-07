@@ -160,12 +160,12 @@ delete_bind_key() {
 prepare_templates() {
 	# policies
 	cp ${starting_dir:?}/provider/aws/templates/policies/idbroker_assume_role_policy.json.template ${starting_dir:?}/provider/aws/policies/idbroker_assume_role_policy.json
-	cp ${starting_dir:?}/provider/aws/templates/policies/log_policy_s3acess.json.template ${starting_dir:?}/provider/aws/policies/log_policy_s3acess.json
-        sed -i "s/YourOwnerName/${OWNER_NAME}/g" ${starting_dir:?}/provider/aws/policies/log_policy_s3acess.json
+	cp ${starting_dir:?}/provider/aws/templates/policies/log_policy_s3access.json.template ${starting_dir:?}/provider/aws/policies/log_policy_s3access.json
+        sed -i "s/YourOwnerName/${OWNER_NAME}/g" ${starting_dir:?}/provider/aws/policies/log_policy_s3access.json
 	cp ${starting_dir:?}/provider/aws/templates/policies/ranger_audit_policy_s3access.json.template ${starting_dir:?}/provider/aws/policies/ranger_audit_policy_s3access.json
         sed -i "s/YourOwnerName/${OWNER_NAME}/g" ${starting_dir:?}/provider/aws/policies/ranger_audit_policy_s3access.json
-        cp ${starting_dir:?}/provider/aws/templates/policies/data_lake_admin_policy_s3access.json.template ${starting_dir:?}/provider/aws/policies/data_lake_admin_policy_s3access.json
-        sed -i "s/YourOwnerName/${OWNER_NAME}/g" ${starting_dir:?}/provider/aws/policies/data_lake_admin_policy_s3access.json
+        cp ${starting_dir:?}/provider/aws/templates/policies/datalake_admin_policy_s3access.json.template ${starting_dir:?}/provider/aws/policies/datalake_admin_policy_s3access.json
+        sed -i "s/YourOwnerName/${OWNER_NAME}/g" ${starting_dir:?}/provider/aws/policies/datalake_admin_policy_s3access.json
         cp ${starting_dir:?}/provider/aws/templates/policies/bucket_policy_s3access.json.template ${starting_dir:?}/provider/aws/policies/bucket_policy_s3access.json
         sed -i "s/YourOwnerName/${OWNER_NAME}/g" ${starting_dir:?}/provider/aws/policies/bucket_policy_s3access.json
         cp ${starting_dir:?}/provider/aws/templates/policies/dynamodb_policy.json.template ${starting_dir:?}/provider/aws/policies/dynamodb_policy.json
@@ -189,7 +189,7 @@ prepare_templates() {
 	sed -i "s/YourOwnerName/${OWNER_NAME}/g" ${starting_dir:?}/provider/aws/roles/dataeng_role.json
 	sed -i "s/YOUR_AWS_ACCOUNT_ID/`aws sts get-caller-identity | jq -r '.Account'`/g" ${starting_dir:?}/provider/aws/roles/dataeng_role.json
         cp ${starting_dir:?}/provider/aws/templates/roles/datasci_role.json.template ${starting_dir:?}/provider/aws/roles/datasci_role.json
-	sed -i "s/YourOwnerName/${OWNER_NAME}/g" ${starting_dir:?}/provider/aws/datasci_role.json
+	sed -i "s/YourOwnerName/${OWNER_NAME}/g" ${starting_dir:?}/provider/aws/roles/datasci_role.json
 	sed -i "s/YOUR_AWS_ACCOUNT_ID/`aws sts get-caller-identity | jq -r '.Account'`/g" ${starting_dir:?}/provider/aws/roles/datasci_role.json
         cp ${starting_dir:?}/provider/aws/templates/roles/crossaccount_sase_role.json.template ${starting_dir:?}/provider/aws/roles/crossaccount_sase_role.json
 }
