@@ -89,6 +89,12 @@ resource "aws_iam_policy_attachment" "ranger-audit-policy-attach" {
   policy_arn = aws_iam_policy.ranger-audit-policy-s3access.arn
 }
 
+resource "aws_iam_policy_attachment" "ranger-audit-bucket-policy-attach" {
+  name       = "${var.owner_name}-ranger-audit-bucket-policy-attachment"
+  roles      = [aws_iam_role.ranger-audit-role.name]
+  policy_arn = aws_iam_policy.bucket-policy-s3access.arn
+}
+
 ##############################################################################################
 #       dynamodb - policy, attachment
 ##############################################################################################
@@ -133,6 +139,12 @@ resource "aws_iam_policy_attachment" "datalake-admin-dynamodb-policy-attach" {
   name       = "${var.owner_name}-datalake-admin-dynamodb-policy-attachment"
   roles      = [aws_iam_role.datalake-admin-role.name]
   policy_arn = aws_iam_policy.dynamodb-policy.arn
+}
+
+resource "aws_iam_policy_attachment" "datalake-admin-bucket-policy-attach" {
+  name       = "${var.owner_name}-datalake-admin-bucket-policy-attachment"
+  roles      = [aws_iam_role.datalake-admin-role.name]
+  policy_arn = aws_iam_policy.bucket-policy-s3access.arn
 }
 
 
