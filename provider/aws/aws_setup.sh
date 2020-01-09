@@ -23,22 +23,27 @@ install_jq_cli
 install_terraform_cli
 
 #####################################################
-#       Step 4: create an ssh key pair
+#       Step 4: install python 3.7 from source
+#####################################################
+install_python37
+
+#####################################################
+#       Step 5: create an ssh key pair
 #####################################################
 create_key_pair
 
 #####################################################
-#       Step 5: prepare IAM Policies and Roles 
+#       Step 6: prepare IAM Policies and Roles 
 #####################################################
 prepare_templates
 
 #####################################################
-#       Step 6: build out AWS env with terraform 
+#       Step 7: build out AWS env with terraform 
 #####################################################
 . $starting_dir/provider/aws/assemble.sh
 
 #####################################################
-#       Step 7: replicate key to bind mnt
+#       Step 8: replicate key to bind mnt
 #####################################################
 replicate_key
 

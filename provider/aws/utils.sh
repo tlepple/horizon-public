@@ -193,3 +193,58 @@ prepare_templates() {
 	sed -i "s/YOUR_AWS_ACCOUNT_ID/`aws sts get-caller-identity | jq -r '.Account'`/g" ${starting_dir:?}/provider/aws/roles/datasci_role.json
         cp ${starting_dir:?}/provider/aws/templates/roles/crossaccount_sase_role.json.template ${starting_dir:?}/provider/aws/roles/crossaccount_sase_role.json
 }
+
+#####################################################
+# Function to install standalone python 3.7.4
+#####################################################
+install_python37() {
+
+   py_v=`python3.7 --version 2>&1`
+   if [[ $py_v = *"command not found"* ]]; then 
+
+	# install some tools:
+	log "Install needed yum tools"
+	yum groupinstall -y 'development tools'
+	yum install -y zlib-dev openssl-devel sqlite-devel bzip2-devel xz-libs xz-devel wget libffi-devel cyrus-sasl-devel
+
+	log "Install python3.7.4 from source"
+	# create directory
+	mkdir -p /usr/local/downloads
+
+	# change to dir
+	cd /usr/local/downloads
+
+	# download source
+	wget https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tar.xz
+
+	# unzip and untar this file:
+	xz -d Python-3.7.4.tar.xz
+	tar -xvf Python-3.7.4.tar
+
+	# change dir
+	cd Python-3.7.4
+
+	# build from source and install
+	./configure --prefix=/usr/local
+	make
+	make altinstall
+
+	# Update PATH and re-initialize
+	log "Update PATH for python3"
+	sed -i '/^PATH=/ s/$/:\/usr\/local\/bin/' ~/.bash_profile
+
+	log "source bash_profile"
+	source ~/.bash_profile
+
+   else
+	log "python3.7 already installed.  Skipping"
+   fi
+}
+
+#####################################################
+# Function to install CDPCLI
+#####################################################
+install_cdpcli() {
+
+}
+
