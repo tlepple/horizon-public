@@ -251,8 +251,9 @@ install_python37() {
 install_cdpcli() {
 	
 	cdp_v=`${starting_dir:?}/provider/aws/cloudera/cdpclienv/env/bin/cdp --version 2>&1`
-	if [[ $cdp_v = *"command not found"* ]]; then 
+	if [[ $cdp_v = *"No such file or directory"* ]]; then 
 		# setup repos?
+		log "installing cdpcli ..."
        
 		#create directories:
 		mkdir -p ${starting_dir:?}/provider/aws/cloudera/cdpclienv
@@ -261,6 +262,7 @@ install_cdpcli() {
 		cd ${starting_dir:?}/provider/aws/cloudera/cdpclienv
         
 		# create virtual env
+		log "create the venv..."
 		python3.7 -m venv env
         
 		# set the env active:
