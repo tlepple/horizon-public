@@ -1,4 +1,5 @@
-#!/bin/bash
+#
+/bin/bash
 
 #####################################################
 # Function to install jq
@@ -236,6 +237,9 @@ install_python37() {
 	log "source bash_profile"
 	source ~/.bash_profile
 
+	# change back to start directory
+	cd $starting_dir
+
    else
 	log "python3.7 already installed.  Skipping"
    fi
@@ -245,6 +249,33 @@ install_python37() {
 # Function to install CDPCLI
 #####################################################
 install_cdpcli() {
+	
+	cdp_v=`${starting_dir:?}/provider/aws/cloudera/cdpclienv/env/bin/cdp --version 2>&1`
+	if [[ $cdp_v = *"command not found"* ]]; then 
+		# setup repos?
+       
+		#create directories:
+		mkdir -p ${starting_dir:?}/provider/aws/cloudera/cdpclienv
+       
+		# change 2 dir
+		cd ${starting_dir:?}/provider/aws/cloudera/cdpclienv
+        
+		# create virtual env
+		python3.7 -m venv env
+        
+		# set the env active:
+		. ${starting_dir:?}/provider/aws/cloudera/cdpclienv/env/bin/activate
+        
+		# pip install the cdpcli client
+		pip install cdpcli
+        
+		# upgrade the client:
+		pip install --upgrade cdpcli
+       
+		# deactive the venv
+		deactivate 
 
+	else
+		log "cdpcli already installed.  Skipping"
+	fi
 }
-
