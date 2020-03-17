@@ -9,7 +9,7 @@ resource "aws_iam_policy" "idbroker-assume-role" {
 
 resource "aws_iam_instance_profile" "idbroker-instance-policy" {
     name 	= "${var.owner_name}-idbroker-role"
-    role	= [aws_iam_role.idbroker-role.name]
+    role	= "${aws_iam_role.idbroker-role.name}"
 }
 
 resource "aws_iam_role" "idbroker-role" {
@@ -39,7 +39,7 @@ resource "aws_iam_policy" "log-policy-s3access" {
 
 resource "aws_iam_instance_profile" "log-role-instance-policy" {
    name		= "${var.owner_name}-log-role"
-   role		= [aws_iam_role.log-role.name]
+   role		= "${aws_iam_role.log-role.name}"
 }
 
 resource "aws_iam_role" "log-role" {
