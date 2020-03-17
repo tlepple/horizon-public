@@ -1,10 +1,15 @@
 ##############################################################################################
-#	idbroker - policy, role, attachment
+#	idbroker - policy, role, attachment, instance-profile
 ##############################################################################################
 resource "aws_iam_policy" "idbroker-assume-role" {
     name 	= "${var.owner_name}-idbroker-assume-role-policy"
     description = "CDP iam policy - idbroker assume role"
     policy	= file("/app/horizon-public/provider/aws/policies/idbroker_assume_role_policy.json")
+}
+
+resource "aws_iam_instance_profile" "idbroker-instance-policy" {
+    name 	= "${var.owner_name}-idbroker-role"
+    role	= [aws_iam_role.idbroker-role.name]
 }
 
 resource "aws_iam_role" "idbroker-role" {
@@ -24,12 +29,17 @@ resource "aws_iam_policy_attachment" "idbroker-policy-attach" {
 }
 
 ##############################################################################################
-#	log - policy, role, attachment
+#	log - policy, role, attachment, instance-policy
 ##############################################################################################
 resource "aws_iam_policy" "log-policy-s3access" {
     name        = "${var.owner_name}-log-policy-s3access"
     description = "CDP iam policy - log policy s3access"
     policy      = file("/app/horizon-public/provider/aws/policies/log_policy_s3access.json")
+}
+
+resource "aws_iam_instance_profile" "log-role-instance-policy" {
+   name		= "${var.owner_name}-log-role"
+   role		= [aws_iam_role.log-role.name]
 }
 
 resource "aws_iam_role" "log-role" {
