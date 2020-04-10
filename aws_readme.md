@@ -16,7 +16,7 @@
 
 ```
 
-2.    #### Set some Terraform Varilables:
+2.    #### Set some Terraform variables:
 
 ```
        vi var-properties.tfvars
