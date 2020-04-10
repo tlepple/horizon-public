@@ -7,6 +7,7 @@
 ## Notes:
 *  This was built and tested on Docker Version 19.03.8
 *  This assumes you already have Docker installed.
+*  All steps below are run from a terminal window
 
 ---
 
