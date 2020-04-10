@@ -4,10 +4,9 @@
 # import parameters and utility functions 
 ###########################################################################################################
 
-. $starting_dir/provider/aws/utils.sh
-. $starting_dir/provider/aws/.env.template
+. /app/horizon-public/provider/aws/utils.sh
+. /app/horizon-public/provider/aws/.env.template
 
-echo 'after ' 
 
 
 #####################################################
@@ -43,7 +42,7 @@ prepare_templates
 #####################################################
 #       Step 7: build out AWS env with terraform 
 #####################################################
-. $starting_dir/provider/aws/assemble.sh
+. /app/horizon-public/provider/aws/assemble.sh
 
 #####################################################
 #       Step 8: replicate key to bind mnt
