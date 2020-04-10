@@ -40,7 +40,7 @@ docker volume ls
 
 ---
 
-### Pull git repo into this new container to build out instance
+### Pull git repo into this new container to setup CDP Pre-Reqs
 
 ```
 # install git 
