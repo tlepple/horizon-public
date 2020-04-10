@@ -9,7 +9,12 @@ GET_PUBLIC_IP=`curl -s ifconfig.me`
 export TF_VAR_my_publicip="${GET_PUBLIC_IP}"
 
 #  call the terraform build
-log "Build out cloud env via Terraform"
+#log "Build out cloud env via Terraform"
+echo "before"
+echo `pwd`
+cd /app/horizon-public/provider/aws
+echo "after"
+echo `pwd`
 terraform init
 terraform apply -var-file /app/horizon-public/provider/aws/var-properties.tfvars
 #terraform apply -var-file var-properties.tfvars -auto-approve
