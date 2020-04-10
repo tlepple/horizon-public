@@ -55,14 +55,14 @@ variable "tag_enddate" {
   default = ""
 }
 
-variable "private_key_name" {
-      description ="Private SSH Key Filename"
-}
+#variable "private_key_name" {
+#      description ="Private SSH Key Filename"
+#}
 
-variable "public_key_name" {
-      description ="Public SSH Key Filename"
-}
+#variable "public_key_name" {
+#      description ="Public SSH Key Filename"
+#}
 
-variable "key_file_path" {
-      description = "SSH Key file path"
-}
+#variable "key_file_path" {
+#      description = "SSH Key file path"
+#}
