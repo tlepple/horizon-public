@@ -5,7 +5,7 @@
 ---
 
 ## Notes:
-*  This was built and tested on Docker Version 19.03.5
+*  This was built and tested on Docker Version 19.03.8
 *  This assumes you already have Docker installed.
 
 ---
@@ -27,19 +27,13 @@ docker volume inspect horizon-public-vol1
 # list volumes
 docker volume ls
 
-# create a directory in OS for bind mount:
-cd ~
-mkdir -p ./Documents/terraform_stuff/horizon_public_mnt
 
-# create a softlink to this directory
-sudo ln -s /Users/$USER/Documents/terraform_stuff/horizon_public_mnt /dockmnt/horizon-public
 
 # run a new docker container with this volume from centos image
 
  docker run -it \
   --name centos_horizon_public \
   --mount source=horizon-public-vol1,target=/app \
-  --mount type=bind,source=/Users/$USER/Documents/terraform_stuff/horizon_public_mnt,target=/dockmnt/horizon-public \
   centos:7 bash
 
 ```
@@ -62,22 +56,6 @@ cd /app/horizon-public
 | ---------------- | ---------------- |
 | AWS              | [Setup Steps](./aws_readme.md)|
 | AWS              | [Terminate Steps](./terminate_readme.md)|
-
----
-
-###  Start / Stop an existing instance with a provider:
-
----
-
-```
-# Example Start:  
-cd /app/horizon-public
-. bin/start_instance.sh <aws | azure | gcp>
-
-# Example Stop:  
-cd /app/horizon-public
-. bin/stop_instance.sh <aws | azure | gcp>
-```
 
 ---
 ---
