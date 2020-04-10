@@ -1,6 +1,7 @@
 #!/bin/bash
 
-export $starting_dir="/app/horizon-public"
+export starting_dir="/app/horizon-public"
+
 #####################################################
 # Function to install jq
 #####################################################
