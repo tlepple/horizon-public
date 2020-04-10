@@ -37,7 +37,7 @@ install_python37
 #####################################################
 #       Step 6: prepare IAM Policies and Roles 
 #####################################################
-prepare_templates
+#prepare_templates
 
 #####################################################
 #       Step 7: build out AWS env with terraform 
