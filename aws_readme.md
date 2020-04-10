@@ -28,3 +28,18 @@
 	tag_enddate="<a future date>"
 
 ```
+
+3.    ####  Export aws credentials
+
+```
+	export AWS_ACCESS_KEY_ID=<Your AWS Access Key>
+	export AWS_SECRET_ACCESS_KEY=<Your AWS Secret Access Key>
+	export AWS_DEFAULT_REGION=<Your AWS Region>
+```
+
+4.    #### Run the script:
+
+```
+
+
+```
