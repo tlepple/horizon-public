@@ -40,6 +40,7 @@
 4.    #### Run the script:
 
 ```
-
+	cd /app/horizon-public/provider/aws
+	. aws_setup.sh
 
 ```
