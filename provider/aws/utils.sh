@@ -161,6 +161,8 @@ delete_bind_key() {
 #####################################################
 prepare_templates() {
 	# policies
+	export starting_dir="/app/horizon-public"
+	echo $starting_dir
 	cp ${starting_dir:?}/provider/aws/templates/policies/idbroker_assume_role_policy.json.template ${starting_dir:?}/provider/aws/policies/idbroker_assume_role_policy.json
 	cp ${starting_dir:?}/provider/aws/templates/policies/log_policy_s3access.json.template ${starting_dir:?}/provider/aws/policies/log_policy_s3access.json
         sed -i "s/YourOwnerName/${OWNER_NAME}/g" ${starting_dir:?}/provider/aws/policies/log_policy_s3access.json
