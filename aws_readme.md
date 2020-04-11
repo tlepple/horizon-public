@@ -1,4 +1,4 @@
-# Notes:
+Notes:
 *  This was tested and run using Terraform v0.12.17
 
 ---
@@ -63,9 +63,10 @@ Instruction for user creation and credentials are here:  [Setup AWS User](https:
 	*  Policies
 	*  Roles
 	*  EC2 Key Pair 
+
 ![](./images/zzuserPolicies.png)
 
-![](./images/zzueserRoles.png)
+![](./images/zzuserRoles.png)
 
 6.   ####  Complete next steps within the CDP Sandbox GUI from your Okta tile:
 
