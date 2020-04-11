@@ -3,9 +3,11 @@
 
 ---
 ---
+
 ###   User Pre - Reqs for AWS:
 
-	*  Instructions to create user and get your AWS Credentials here:   [Setup AWS User](https://github.com/tlepple/horizon-public-how2/blob/master/provider/aws/aws_user.md)
+[Setup AWS User] (https://github.com/tlepple/horizon-public-how2/blob/master/provider/aws/aws_user.md)
+
 ---
 ---
 
