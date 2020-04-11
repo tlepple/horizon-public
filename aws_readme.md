@@ -4,9 +4,9 @@
 ---
 ---
 
-###   User Pre - Reqs for AWS:
+###   Setup User Pre-Reqs for AWS:
 
-[Setup AWS User] (https://github.com/tlepple/horizon-public-how2/blob/master/provider/aws/aws_user.md)
+[Setup AWS User](https://github.com/tlepple/horizon-public-how2/blob/master/provider/aws/aws_user.md)
 
 ---
 ---
