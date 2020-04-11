@@ -18,7 +18,7 @@ Instruction for user creation and credentials are here:  [Setup AWS User](https:
 
 ####  Update the file `.env.template` with needed items here:
 
-1.    #### Update some variables to pass to the script.
+1.    #### Update some variables to pass to the script in your terminal docker session:
 
 ``` 
        cd /app/horizon-public/provider/aws
@@ -29,7 +29,7 @@ Instruction for user creation and credentials are here:  [Setup AWS User](https:
 
 ```
 
-2.    #### Set the  Terraform variables in the file `var-properties.tfvars`:
+2.    #### Set the  Terraform variables in the file `var-properties.tfvars` in your terminal docker session:
 
 ```
        vi var-properties.tfvars
@@ -42,7 +42,7 @@ Instruction for user creation and credentials are here:  [Setup AWS User](https:
 
 ```
 
-3.    ####  Export your AWS Credentials into memory
+3.    ####  Export your AWS Credentials into memory in your terminal docker session:
 
 ```
 	export AWS_ACCESS_KEY_ID=<Your AWS Access Key>
@@ -50,7 +50,7 @@ Instruction for user creation and credentials are here:  [Setup AWS User](https:
 	export AWS_DEFAULT_REGION=<Your AWS Region>
 ```
 
-4.    #### Run the script:
+4.    #### Run the below script in your terminal docker session:
 
 ```
 	cd /app/horizon-public/provider/aws
