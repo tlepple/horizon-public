@@ -74,7 +74,7 @@ Instruction for user creation and credentials are here:  [Setup AWS User](https:
 
 ---
 
-![](./images/verifyKP.png)
+![](./images/verfiyKP.png)
 
 ---
 
