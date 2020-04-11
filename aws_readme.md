@@ -80,6 +80,8 @@ Instruction for user creation and credentials are here:  [Setup AWS User](https:
 
 6.   ####  Complete next steps within the CDP Sandbox GUI from your Okta tile:
 
+Instruction for `CDP Environment` creation are here:  [Setup CDP Environment](https://github.com/tlepple/horizon-public-how2/blob/master/provider/aws/cdp_env.md)
+
 
 ---
 ---
