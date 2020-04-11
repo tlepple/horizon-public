@@ -11,12 +11,12 @@ Instruction for user creation and credentials are here:  [Setup AWS User](https:
 ---
 ---
 
-##  Begin Setup Here:
+##  Begin Terraform Setup Here:
 
 ---
 ---
 
-###  Update the file `.env.template` with needed items here:
+####  Update the file `.env.template` with needed items here:
 
 1.    #### Update some variables to pass to the script.
 
@@ -42,7 +42,7 @@ Instruction for user creation and credentials are here:  [Setup AWS User](https:
 
 ```
 
-3.    ####  Export your aws credentials into memory
+3.    ####  Export your AWS Credentials into memory
 
 ```
 	export AWS_ACCESS_KEY_ID=<Your AWS Access Key>
