@@ -74,6 +74,10 @@ Instruction for user creation and credentials are here:  [Setup AWS User](https:
 
 ---
 
+![](./images/verifyKP.png)
+
+---
+
 6.   ####  Complete next steps within the CDP Sandbox GUI from your Okta tile:
 
 
