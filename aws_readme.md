@@ -1,9 +1,20 @@
-## Notes:
+# Notes:
 *  This was tested and run using Terraform v0.12.17
 
 ---
+---
+###   User Pre - Reqs for AWS:
 
-###  Setup AWS items here:
+	*  Instructions to create user and get your AWS Credentials here:   [Setup AWS User](https://github.com/tlepple/horizon-public-how2/blob/master/provider/aws/aws_user.md)
+---
+---
+
+##  Begin Setup Here:
+
+---
+---
+
+###  Update the file `.env.template` with needed items here:
 
 1.    #### Update some variables to pass to the script.
 
@@ -16,7 +27,7 @@
 
 ```
 
-2.    #### Set some Terraform variables:
+2.    #### Set the  Terraform variables in the file `var-properties.tfvars`:
 
 ```
        vi var-properties.tfvars
@@ -29,7 +40,7 @@
 
 ```
 
-3.    ####  Export aws credentials
+3.    ####  Export your aws credentials into memory
 
 ```
 	export AWS_ACCESS_KEY_ID=<Your AWS Access Key>
@@ -44,3 +55,14 @@
 	. aws_setup.sh
 
 ```
+
+5.   #### Verify in the AWS GUI that these items exist:
+	*  Policies
+	*  Roles
+	*  EC2 Key Pair 
+
+6.   ####  Complete next steps within the CDP GUI from Okta Tile:
+
+
+---
+---
