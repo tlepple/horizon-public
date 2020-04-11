@@ -64,9 +64,15 @@ Instruction for user creation and credentials are here:  [Setup AWS User](https:
 	*  Roles
 	*  EC2 Key Pair 
 
+--- 
+
 ![](./images/zzuserPolicies.png)
 
+---
+
 ![](./images/zzuserRoles.png)
+
+---
 
 6.   ####  Complete next steps within the CDP Sandbox GUI from your Okta tile:
 
