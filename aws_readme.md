@@ -58,6 +58,12 @@ Instruction for user creation and credentials are here:  [Setup AWS User](https:
 
 ```
 
+*  This step will start the Terraform build to create policies, roles, and S3 buckets inside of AWS and associate needed items.
+*  Type `Yes` in the terminal window when prompted
+
+---
+---
+
 5.   #### Verify in the AWS GUI that these items exist:
 
 	*  Policies
